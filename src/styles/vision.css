@@ -1,0 +1,248 @@
+/* Vision Section Styles */
+
+.vision {
+  position: relative;
+}
+
+.vision-content {
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.8) 0%, rgba(42, 47, 79, 0.6) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  text-align: center;
+  opacity: 0;
+  animation: slideInUp 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.05), transparent);
+  animation: rotate 20s linear infinite;
+}
+
+.vision-content::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  right: -50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 0, 110, 0.05), transparent);
+  animation: rotate 25s linear infinite reverse;
+}
+
+.vision-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.vision-content h2 {
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.vision-main {
+  font-size: 1.3rem;
+  color: #00d4ff;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.vision-details {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.vision-details p {
+  color: #b0b8d4;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.vision-details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Vision Points Grid */
+.vision-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.vision-point {
+  padding: 1.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.vision-point:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+}
+
+.point-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.vision-point h4 {
+  color: #00ff88;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.vision-point p {
+  color: #7c8aa2;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Vision CTA */
+.vision-cta {
+  position: relative;
+  z-index: 1;
+}
+
+.vision-cta p {
+  font-size: 1.2rem;
+  color: #00d4ff;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.vision-cta .btn {
+  font-size: 1rem;
+  padding: 1rem 2.5rem;
+}
+
+/* ===== Responsive Design ===== */
+
+@media (max-width: 768px) {
+  .vision-content {
+    padding: 2.5rem 2rem;
+  }
+
+  .vision-icon {
+    font-size: 2.5rem;
+  }
+
+  .vision-content h2 {
+    font-size: 2rem;
+  }
+
+  .vision-main {
+    font-size: 1.1rem;
+  }
+
+  .vision-details p {
+    font-size: 1rem;
+  }
+
+  .vision-points {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .vision-point {
+    padding: 1.2rem;
+  }
+
+  .point-icon {
+    font-size: 2rem;
+  }
+
+  .vision-point h4 {
+    font-size: 1rem;
+  }
+
+  .vision-cta p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-content {
+    padding: 2rem 1.5rem;
+    border-radius: 1.2rem;
+  }
+
+  .vision-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .vision-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .vision-main {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .vision-details p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .vision-points {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .vision-point {
+    padding: 1rem;
+  }
+
+  .point-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .vision-point h4 {
+    font-size: 0.95rem;
+  }
+
+  .vision-point p {
+    font-size: 0.85rem;
+  }
+
+  .vision-cta {
+    margin-top: 2rem;
+  }
+
+  .vision-cta p {
+    font-size: 1rem;
+  }
+}

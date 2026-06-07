@@ -1,0 +1,259 @@
+/* Timeline Section Styles */
+
+.timeline {
+  position: relative;
+}
+
+.timeline-wrapper {
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* Timeline Items */
+.timeline-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.timeline-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  border: 3px solid #0a0e27;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .marker-dot {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+}
+
+.marker-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(180deg, #00d4ff 0%, transparent 100%);
+  margin-top: 1rem;
+}
+
+/* Timeline Card */
+.timeline-card {
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.7) 0%, rgba(42, 47, 79, 0.5) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00d4ff 0%, #00ff88 50%, #ff006e 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.timeline-item:hover .timeline-card::before {
+  transform: scaleX(1);
+}
+
+.timeline-item:hover .timeline-card {
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.15), inset 0 0 20px rgba(0, 212, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.timeline-item.expanded .timeline-card {
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+}
+
+/* Timeline Header */
+.timeline-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  animation: float 3s ease-in-out infinite;
+}
+
+.timeline-title-group {
+  flex: 1;
+}
+
+.timeline-year {
+  display: inline-block;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title-group h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Timeline Description */
+.timeline-description {
+  color: #b0b8d4;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Timeline Skills */
+.timeline-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.timeline-item:hover .skill-tag {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.skill-tag:nth-child(odd) {
+  border-color: rgba(255, 0, 110, 0.3);
+  color: #ff006e;
+  background: rgba(255, 0, 110, 0.05);
+}
+
+.timeline-item:hover .skill-tag:nth-child(odd) {
+  border-color: rgba(255, 0, 110, 0.5);
+  background: rgba(255, 0, 110, 0.15);
+  box-shadow: 0 0 10px rgba(255, 0, 110, 0.2);
+}
+
+/* ===== Responsive Design ===== */
+
+@media (max-width: 768px) {
+  .timeline-item {
+    gap: 1.5rem;
+  }
+
+  .timeline-card {
+    padding: 1.5rem;
+  }
+
+  .timeline-icon {
+    font-size: 2rem;
+  }
+
+  .timeline-title-group h3 {
+    font-size: 1.2rem;
+  }
+
+  .timeline-description {
+    font-size: 0.95rem;
+  }
+
+  .skill-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    gap: 1rem;
+  }
+
+  .timeline-card {
+    padding: 1.2rem;
+  }
+
+  .timeline-icon {
+    font-size: 1.8rem;
+  }
+
+  .timeline-year {
+    font-size: 0.8rem;
+  }
+
+  .timeline-title-group h3 {
+    font-size: 1rem;
+  }
+
+  .timeline-description {
+    font-size: 0.9rem;
+  }
+
+  .timeline-skills {
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
