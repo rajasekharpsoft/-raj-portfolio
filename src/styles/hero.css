@@ -188,7 +188,7 @@
 .avatar-container {
   position: relative;
   width: 300px;
-  height: 400px;
+  height: 440px;
 }
 
 /* Avatar Background Circles */
@@ -241,15 +241,15 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Avatar Head */
+/* Avatar Head - Realistic sketch style */
 .avatar-head {
   position: relative;
   width: 80px;
   height: 90px;
   margin: 0 auto 10px;
-  border-radius: 60% 60% 50% 50%;
-  background: linear-gradient(135deg, #fdb833 0%, #f8a800 100%);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  border-radius: 55% 55% 50% 50%;
+  background: linear-gradient(135deg, #e8d4b8 0%, #d4b8a0 100%);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), inset -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .avatar-face {
@@ -264,23 +264,35 @@
 }
 
 .avatar-eye {
-  width: 12px;
-  height: 16px;
-  background: #222;
-  border-radius: 50%;
-  position: relative;
-}
-
-.avatar-eye::after {
-  content: '';
-  position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 14px;
+  height: 18px;
   background: white;
   border-radius: 50%;
-  top: 3px;
+  position: relative;
+  border: 1px solid #999;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.eye-pupil {
+  width: 8px;
+  height: 10px;
+  background: #3d2817;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
   left: 3px;
   animation: blink-eye 2s ease-in-out infinite;
+}
+
+.eye-pupil::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
 }
 
 @keyframes blink-eye {
@@ -294,10 +306,44 @@
   }
 }
 
+/* Eyebrows */
+.avatar-eyebrow {
+  position: absolute;
+  width: 18px;
+  height: 3px;
+  background: #3d2817;
+  border-radius: 2px;
+  top: 22px;
+}
+
+.avatar-eyebrow.left {
+  left: 18px;
+  transform: rotate(-15deg);
+}
+
+.avatar-eyebrow.right {
+  right: 18px;
+  transform: rotate(15deg);
+}
+
+/* Nose - Sketch style */
+.avatar-nose {
+  position: absolute;
+  width: 8px;
+  height: 10px;
+  border: 1px solid #bbb;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Mouth - Friendly smile */
 .avatar-mouth {
   width: 20px;
   height: 8px;
-  border: 2px solid #222;
+  border: 2px solid #3d2817;
   border-top: none;
   border-radius: 0 0 20px 20px;
   margin-top: 10px;
@@ -314,16 +360,44 @@
   }
 }
 
-/* Avatar Hair */
+/* Avatar Hair - Dark, sketch style */
 .avatar-hair {
   position: absolute;
   top: -5px;
   left: 0;
   width: 80px;
-  height: 40px;
-  background: #333;
+  height: 42px;
+  background: linear-gradient(135deg, #2b1810 0%, #3d2817 100%);
   border-radius: 50% 50% 0 0;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Ears */
+.avatar-ear {
+  position: absolute;
+  width: 14px;
+  height: 18px;
+  background: linear-gradient(135deg, #d4b8a0 0%, #c9a98a 100%);
+  border-radius: 50%;
+  top: 32px;
+  border: 1px solid #bbb;
+}
+
+.avatar-ear.left {
+  left: -8px;
+}
+
+.avatar-ear.right {
+  right: -8px;
+}
+
+/* Neck */
+.avatar-neck {
+  width: 22px;
+  height: 12px;
+  background: linear-gradient(135deg, #e8d4b8 0%, #d4b8a0 100%);
+  margin: 0 auto;
+  box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Avatar Body */
@@ -339,9 +413,25 @@
 .avatar-shirt {
   width: 100px;
   height: 60px;
-  background: linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%);
+  background: linear-gradient(135deg, #e84856 0%, #d63946 100%);
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(232, 72, 86, 0.3);
+  position: relative;
+}
+
+.avatar-shirt::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    rgba(255, 255, 255, 0.1) 8px,
+    rgba(255, 255, 255, 0.1) 16px
+  );
+  border-radius: 10px 10px 0 0;
 }
 
 .avatar-arms {
@@ -381,6 +471,41 @@
   50% {
     transform: rotateZ(20deg);
   }
+}
+
+/* Replay Voice Button */
+.replay-voice-btn {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  transition: all 0.3s ease;
+  animation: slideInUp 0.5s ease-out 0.5s both;
+  z-index: 10;
+}
+
+.replay-voice-btn:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+}
+
+.replay-voice-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.speaker-icon {
+  animation: pulse 2s ease-in-out infinite;
 }
 
 /* Avatar Badges */

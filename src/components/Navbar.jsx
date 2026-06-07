@@ -24,7 +24,7 @@ function Navbar() {
         {/* Logo */}
         <div className="navbar-logo" onClick={scrollToTop}>
           <span className="logo-icon">⚡</span>
-          <span className="logo-text">RAJA</span>
+          <span className="logo-text">Raja Sekhar Vanjeti</span>
         </div>
 
         {/* Hamburger Menu */}

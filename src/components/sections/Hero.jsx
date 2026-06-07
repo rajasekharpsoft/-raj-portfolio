@@ -6,6 +6,7 @@ function Hero() {
   const [isTyping, setIsTyping] = useState(true)
   const [cursorVisible, setCursorVisible] = useState(true)
   const [voiceStarted, setVoiceStarted] = useState(false)
+  const [showReplayButton, setShowReplayButton] = useState(false)
 
   // Text to type
   const fullText =
@@ -36,27 +37,53 @@ function Hero() {
     return () => clearInterval(interval)
   }, [])
 
-  // Auto play AI voice on page load
-  useEffect(() => {
-    const playVoice = () => {
-      const voiceText =
-        "Hello, I'm Raja Sekhar Vanjeti. Welcome to my digital portfolio. I am a Java Backend Developer, Full Stack Developer, and AI Solutions Engineer. I build scalable software systems, modern web applications, AI-powered solutions, and business automation platforms. Explore my journey, skills, projects, and future vision."
+  // Function to play voice with young male voice
+  const playVoice = () => {
+    const voiceText =
+      "Hey! I'm Raja Sekhar Vanjeti. Welcome to my digital portfolio. I'm a passionate Java Backend Developer, Full Stack Developer, and AI Solutions Engineer. I love building scalable software systems, modern web applications, and AI-powered solutions. Check out my journey, skills, and projects. Let's build something amazing together!"
 
-      // Use Web Speech API if available
-      if ('speechSynthesis' in window) {
-        const utterance = new SpeechSynthesisUtterance(voiceText)
-        utterance.rate = 0.95
-        utterance.pitch = 1
-        utterance.volume = 1
-        speechSynthesis.cancel() // Cancel any ongoing speech
-        speechSynthesis.speak(utterance)
-        setVoiceStarted(true)
+    // Use Web Speech API if available
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel() // Cancel any ongoing speech
+
+      const utterance = new SpeechSynthesisUtterance(voiceText)
+
+      // Young male voice settings (age 23)
+      utterance.rate = 0.9 // Natural speaking rate
+      utterance.pitch = 0.8 // Lower pitch for male voice
+      utterance.volume = 1
+
+      // Try to select a male voice
+      const voices = speechSynthesis.getVoices()
+      const maleVoice = voices.find(voice => voice.name.includes('Male') || voice.name.includes('man'))
+      if (maleVoice) {
+        utterance.voice = maleVoice
       }
-    }
 
-    // Play voice after a short delay
-    const timer = setTimeout(playVoice, 1000)
-    return () => clearTimeout(timer)
+      utterance.onend = () => {
+        setShowReplayButton(true)
+      }
+
+      speechSynthesis.speak(utterance)
+      setVoiceStarted(true)
+    }
+  }
+
+  // Auto play voice only on first visit
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('rajPortfolioVisited')
+
+    if (!hasVisited) {
+      // Mark as visited
+      localStorage.setItem('rajPortfolioVisited', 'true')
+
+      // Play voice after a short delay
+      const timer = setTimeout(playVoice, 1500)
+      return () => clearTimeout(timer)
+    } else {
+      // Show replay button on subsequent visits
+      setShowReplayButton(true)
+    }
   }, [])
 
   const scrollToSection = (sectionId) => {
@@ -127,16 +154,42 @@ function Hero() {
             <div className="avatar-bg-circle circle-2"></div>
             <div className="avatar-bg-circle circle-3"></div>
 
-            {/* Avatar illustration (CSS-based) */}
+            {/* Avatar illustration (Sketch style based on Raja) */}
             <div className="avatar-illustration">
+              {/* Head */}
               <div className="avatar-head">
                 <div className="avatar-face">
-                  <div className="avatar-eye left"></div>
-                  <div className="avatar-eye right"></div>
+                  {/* Eyes - Dark brown, natural look */}
+                  <div className="avatar-eye left">
+                    <div className="eye-pupil"></div>
+                  </div>
+                  <div className="avatar-eye right">
+                    <div className="eye-pupil"></div>
+                  </div>
+
+                  {/* Eyebrows */}
+                  <div className="avatar-eyebrow left"></div>
+                  <div className="avatar-eyebrow right"></div>
+
+                  {/* Nose - Sketch style */}
+                  <div className="avatar-nose"></div>
+
+                  {/* Mouth - Friendly smile */}
                   <div className="avatar-mouth"></div>
                 </div>
+
+                {/* Hair - Dark, sketch style */}
                 <div className="avatar-hair"></div>
+
+                {/* Ears */}
+                <div className="avatar-ear left"></div>
+                <div className="avatar-ear right"></div>
               </div>
+
+              {/* Neck */}
+              <div className="avatar-neck"></div>
+
+              {/* Body with shirt */}
               <div className="avatar-body">
                 <div className="avatar-shirt"></div>
                 <div className="avatar-arms">
@@ -145,6 +198,13 @@ function Hero() {
                 </div>
               </div>
             </div>
+
+            {/* Replay Voice Button */}
+            {showReplayButton && (
+              <button className="replay-voice-btn" onClick={playVoice} title="Replay welcome message">
+                <span className="speaker-icon">🔊</span>
+              </button>
+            )}
 
             {/* Tech badges floating around avatar */}
             <div className="avatar-badge badge-1">React</div>

@@ -49,7 +49,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 /* Navigation Menu */
