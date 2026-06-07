@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../../styles/hero.css'
+import profileImage from '../../assets/raj-profile.jpg'
 
 function Hero() {
   const [displayedText, setDisplayedText] = useState('')
@@ -154,57 +155,30 @@ function Hero() {
             <div className="avatar-bg-circle circle-2"></div>
             <div className="avatar-bg-circle circle-3"></div>
 
-            {/* Avatar illustration (Sketch style based on Raja) */}
-            <div className="avatar-illustration">
-              {/* Head */}
-              <div className="avatar-head">
-                <div className="avatar-face">
-                  {/* Eyes - Dark brown, natural look */}
-                  <div className="avatar-eye left">
-                    <div className="eye-pupil"></div>
-                  </div>
-                  <div className="avatar-eye right">
-                    <div className="eye-pupil"></div>
-                  </div>
+            {/* Real Profile Photo */}
+            <div className="profile-photo-container">
+              <img
+                src={profileImage}
+                alt="Raja Sekhar Vanjeti"
+                className="profile-photo"
+              />
 
-                  {/* Eyebrows */}
-                  <div className="avatar-eyebrow left"></div>
-                  <div className="avatar-eyebrow right"></div>
+              {/* Glowing border effect */}
+              <div className="photo-glow"></div>
 
-                  {/* Nose - Sketch style */}
-                  <div className="avatar-nose"></div>
-
-                  {/* Mouth - Friendly smile */}
-                  <div className="avatar-mouth"></div>
-                </div>
-
-                {/* Hair - Dark, sketch style */}
-                <div className="avatar-hair"></div>
-
-                {/* Ears */}
-                <div className="avatar-ear left"></div>
-                <div className="avatar-ear right"></div>
+              {/* Name overlay on photo */}
+              <div className="photo-overlay">
+                <h2>Raja Sekhar Vanjeti</h2>
+                <p>Java Backend Developer</p>
               </div>
 
-              {/* Neck */}
-              <div className="avatar-neck"></div>
-
-              {/* Body with shirt */}
-              <div className="avatar-body">
-                <div className="avatar-shirt"></div>
-                <div className="avatar-arms">
-                  <div className="avatar-arm left"></div>
-                  <div className="avatar-arm right"></div>
-                </div>
-              </div>
+              {/* Replay Voice Button */}
+              {showReplayButton && (
+                <button className="replay-voice-btn" onClick={playVoice} title="Replay welcome message">
+                  <span className="speaker-icon">🔊</span>
+                </button>
+              )}
             </div>
-
-            {/* Replay Voice Button */}
-            {showReplayButton && (
-              <button className="replay-voice-btn" onClick={playVoice} title="Replay welcome message">
-                <span className="speaker-icon">🔊</span>
-              </button>
-            )}
 
             {/* Tech badges floating around avatar */}
             <div className="avatar-badge badge-1">React</div>

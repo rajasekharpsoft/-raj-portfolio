@@ -187,8 +187,11 @@
 
 .avatar-container {
   position: relative;
-  width: 300px;
-  height: 440px;
+  width: 350px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Avatar Background Circles */
@@ -199,34 +202,103 @@
 }
 
 .circle-1 {
-  width: 350px;
-  height: 350px;
-  top: -50px;
-  left: -50px;
+  width: 400px;
+  height: 400px;
+  top: -80px;
+  left: -80px;
   background: radial-gradient(circle, #00d4ff, transparent);
   animation: rotate 20s linear infinite;
   z-index: 0;
 }
 
 .circle-2 {
-  width: 250px;
-  height: 250px;
-  bottom: -50px;
-  right: -50px;
+  width: 300px;
+  height: 300px;
+  bottom: -80px;
+  right: -80px;
   background: radial-gradient(circle, #ff006e, transparent);
   animation: rotate 25s linear infinite reverse;
   z-index: 0;
 }
 
 .circle-3 {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, #8c43ff, transparent);
   animation: rotate 30s linear infinite;
   z-index: 0;
+}
+
+/* Profile Photo Container */
+.profile-photo-container {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  z-index: 2;
+  animation: slideInRight 0.8s ease-out;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 0 80px rgba(255, 0, 110, 0.2);
+  border: 3px solid rgba(0, 212, 255, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.profile-photo:hover {
+  box-shadow: 0 0 60px rgba(0, 212, 255, 0.5), 0 0 100px rgba(255, 0, 110, 0.3);
+  transform: scale(1.02);
+}
+
+/* Glowing effect around photo */
+.photo-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1), transparent);
+  animation: glow 2s ease-in-out infinite;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+/* Overlay on photo */
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 39, 0.95) 100%);
+  color: white;
+  padding: 2rem 1.5rem;
+  border-radius: 0 0 20px 20px;
+  z-index: 3;
+  text-align: center;
+}
+
+.photo-overlay h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.photo-overlay p {
+  margin: 0;
+  color: #00ff88;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* Avatar Illustration */
@@ -476,32 +548,31 @@
 /* Replay Voice Button */
 .replay-voice-btn {
   position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px;
-  height: 45px;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
   background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
   transition: all 0.3s ease;
   animation: slideInUp 0.5s ease-out 0.5s both;
   z-index: 10;
 }
 
 .replay-voice-btn:hover {
-  transform: translateX(-50%) scale(1.1);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  transform: scale(1.15);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
 }
 
 .replay-voice-btn:active {
-  transform: translateX(-50%) scale(0.95);
+  transform: scale(0.9);
 }
 
 .speaker-icon {
